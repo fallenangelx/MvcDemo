@@ -1,0 +1,7 @@
+C:\w3schools_demo\MvcDemo\Dados\bin\Debug\Dados.dll.config
+C:\w3schools_demo\MvcDemo\Dados\bin\Debug\Dados.dll
+C:\w3schools_demo\MvcDemo\Dados\bin\Debug\Dados.pdb
+C:\w3schools_demo\MvcDemo\Dados\bin\Debug\EntityFramework.dll
+C:\w3schools_demo\MvcDemo\Dados\bin\Debug\EntityFramework.xml
+C:\w3schools_demo\MvcDemo\Dados\obj\Debug\Dados.dll
+C:\w3schools_demo\MvcDemo\Dados\obj\Debug\Dados.pdb

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BlogDatabaseModelStoreContainer" CdmEntityContainer="BlogDatabaseEntities">
+    <EntitySetMapping Name="MoviesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BlogDatabaseModel.Movies)">
+        <MappingFragment StoreEntitySet="MoviesSet">
+          <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Director" ColumnName="Director" />
+          <ScalarProperty Name="LaunchDate" ColumnName="LaunchDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

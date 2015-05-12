@@ -2,6 +2,21 @@
 <Schema Namespace="BlogDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="BlogDatabaseModelStoreContainer">
     <EntitySet Name="MoviesSet" EntityType="BlogDatabaseModel.Store.MoviesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BlogPostSet" EntityType="BlogDatabaseModel.Store.BlogPostSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CommentsSet" EntityType="BlogDatabaseModel.Store.CommentsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet" EntityType="BlogDatabaseModel.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PostId" Association="BlogDatabaseModel.Store.PostId">
+      <End Role="BlogPost" EntitySet="BlogPostSet" />
+      <End Role="Comments" EntitySet="CommentsSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserId" Association="BlogDatabaseModel.Store.UserId">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Comments" EntitySet="CommentsSet" />
+    </AssociationSet>
+    <AssociationSet Name="UsersId" Association="BlogDatabaseModel.Store.UsersId">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="BlogPost" EntitySet="BlogPostSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="MoviesSet">
     <Key>
@@ -12,4 +27,68 @@
     <Property Name="Director" Type="nvarchar" Nullable="false" MaxLength="100" />
     <Property Name="LaunchDate" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="BlogPostSet">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Post" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Tags" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CommentsSet">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PostId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="PostId">
+    <End Role="BlogPost" Type="BlogDatabaseModel.Store.BlogPostSet" Multiplicity="1" />
+    <End Role="Comments" Type="BlogDatabaseModel.Store.CommentsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BlogPost">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserId">
+    <End Role="User" Type="BlogDatabaseModel.Store.UserSet" Multiplicity="1" />
+    <End Role="Comments" Type="BlogDatabaseModel.Store.CommentsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersId">
+    <End Role="User" Type="BlogDatabaseModel.Store.UserSet" Multiplicity="1" />
+    <End Role="BlogPost" Type="BlogDatabaseModel.Store.BlogPostSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="BlogPost">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

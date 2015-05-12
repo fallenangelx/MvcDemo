@@ -5,7 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5d9adff14ff749c6bd5827a043d2f441" Name="Diagram1" >
-        <EntityTypeShape EntityType="BlogDatabaseModel.Movies" Width="1.5" PointX="3.875" PointY="2.125" />
+        <EntityTypeShape EntityType="BlogDatabaseModel.Movies" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogDatabaseModel.BlogPost" Width="1.5" PointX="4.125" PointY="0.75" />
+        <EntityTypeShape EntityType="BlogDatabaseModel.Comments" Width="1.5" PointX="6.75" PointY="0.5" />
+        <EntityTypeShape EntityType="BlogDatabaseModel.User" Width="1.625" PointX="6.375" PointY="3.25" />
+        <AssociationConnector Association="BlogDatabaseModel.PostId" />
+        <AssociationConnector Association="BlogDatabaseModel.UserId" ManuallyRouted="true" >
+          <ConnectorPoint PointX="7.6615967202398672" PointY="3.25" />
+          <ConnectorPoint PointX="7.6615967202398672" PointY="2.4210009765625" />
+        </AssociationConnector>
+        <AssociationConnector Association="BlogDatabaseModel.UsersId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

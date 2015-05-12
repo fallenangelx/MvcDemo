@@ -26,5 +26,8 @@ namespace Dados
         }
     
         public DbSet<Movies> MoviesSet { get; set; }
+        public DbSet<BlogPost> BlogPostSet { get; set; }
+        public DbSet<Comments> CommentsSet { get; set; }
+        public DbSet<User> UserSet { get; set; }
     }
 }

@@ -1,0 +1,14 @@
+﻿@model System.Collections.Generic.List<Dados.BlogPost>
+@*@model IEnumerable<MvcDemo.Models.BlogPostModel>*@
+
+@{
+    ViewBag.Title = "Blog Posts";
+}
+
+<h2>Blog Posts</h2>
+
+@foreach (var item in Model)
+{
+    <h3>@Html.DisplayFor(dadosItem => item.Title)</h3>
+    <p>@Html.DisplayFor(dadosItem => item.Post)</p>
+}

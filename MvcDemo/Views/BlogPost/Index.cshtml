@@ -5,10 +5,14 @@
     ViewBag.Title = "Blog Posts";
 }
 
-<h2>Blog Posts</h2>
-
 @foreach (var item in Model)
 {
-    <h3>@Html.DisplayFor(dadosItem => item.Title)</h3>
-    <p>@Html.DisplayFor(dadosItem => item.Post)</p>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">@Html.DisplayFor(dadosItem => item.Title)</h3>
+        </div>
+        <div class="panel-body">
+            @Html.DisplayFor(dadosItem => item.Post)
+        </div>
+    </div>
 }

@@ -5,6 +5,7 @@
     <EntitySet Name="BlogPostSet" EntityType="BlogDatabaseModel.Store.BlogPostSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CommentsSet" EntityType="BlogDatabaseModel.Store.CommentsSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserSet" EntityType="BlogDatabaseModel.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TagsSet" EntityType="BlogDatabaseModel.Store.TagsSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="PostId" Association="BlogDatabaseModel.Store.PostId">
       <End Role="BlogPost" EntitySet="BlogPostSet" />
       <End Role="Comments" EntitySet="CommentsSet" />
@@ -15,6 +16,10 @@
     </AssociationSet>
     <AssociationSet Name="UsersId" Association="BlogDatabaseModel.Store.UsersId">
       <End Role="User" EntitySet="UserSet" />
+      <End Role="BlogPost" EntitySet="BlogPostSet" />
+    </AssociationSet>
+    <AssociationSet Name="TagsId" Association="BlogDatabaseModel.Store.TagsId">
+      <End Role="Tags" EntitySet="TagsSet" />
       <End Role="BlogPost" EntitySet="BlogPostSet" />
     </AssociationSet>
   </EntityContainer>
@@ -34,8 +39,8 @@
     <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Post" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
-    <Property Name="Tags" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="TagsId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CommentsSet">
     <Key>
@@ -54,6 +59,13 @@
     <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TagsSet">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tag" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <Association Name="PostId">
     <End Role="BlogPost" Type="BlogDatabaseModel.Store.BlogPostSet" Multiplicity="1" />
@@ -88,6 +100,18 @@
       </Principal>
       <Dependent Role="BlogPost">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TagsId">
+    <End Role="Tags" Type="BlogDatabaseModel.Store.TagsSet" Multiplicity="1" />
+    <End Role="BlogPost" Type="BlogDatabaseModel.Store.BlogPostSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="TagId" />
+      </Principal>
+      <Dependent Role="BlogPost">
+        <PropertyRef Name="TagsId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

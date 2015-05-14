@@ -17,8 +17,8 @@
           <ScalarProperty Name="PostId" ColumnName="PostId" />
           <ScalarProperty Name="Post" ColumnName="Post" />
           <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Tags" ColumnName="Tags" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TagsId" ColumnName="TagsId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -39,6 +39,14 @@
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BlogDatabaseModel.Tags)">
+        <MappingFragment StoreEntitySet="TagsSet">
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

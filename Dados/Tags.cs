@@ -12,21 +12,16 @@ namespace Dados
     using System;
     using System.Collections.Generic;
     
-    public partial class BlogPost
+    public partial class Tags
     {
-        public BlogPost()
+        public Tags()
         {
-            this.Comments = new HashSet<Comments>();
+            this.BlogPost = new HashSet<BlogPost>();
         }
     
-        public int PostId { get; set; }
-        public string Post { get; set; }
-        public string Title { get; set; }
-        public int UserId { get; set; }
-        public int TagsId { get; set; }
+        public int TagId { get; set; }
+        public string Tag { get; set; }
     
-        public virtual ICollection<Comments> Comments { get; set; }
-        public virtual User User { get; set; }
-        public virtual Tags TagId { get; set; }
+        public virtual ICollection<BlogPost> BlogPost { get; set; }
     }
 }

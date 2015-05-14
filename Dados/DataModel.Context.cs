@@ -29,5 +29,6 @@ namespace Dados
         public DbSet<BlogPost> BlogPostSet { get; set; }
         public DbSet<Comments> CommentsSet { get; set; }
         public DbSet<User> UserSet { get; set; }
+        public DbSet<Tags> TagsSet { get; set; }
     }
 }

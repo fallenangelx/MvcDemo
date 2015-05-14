@@ -17,6 +17,11 @@
       <End Role="User" EntitySet="UserSet" />
       <End Role="BlogPost" EntitySet="BlogPostSet" />
     </AssociationSet>
+    <EntitySet Name="TagsSet" EntityType="BlogDatabaseModel.Tags" />
+    <AssociationSet Name="TagsId" Association="BlogDatabaseModel.TagsId">
+      <End Role="Tags" EntitySet="TagsSet" />
+      <End Role="BlogPost" EntitySet="BlogPostSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Movies">
     <Key>
@@ -34,10 +39,11 @@
     <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Post" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" />
     <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" />
-    <Property Name="Tags" Type="String" Nullable="false" MaxLength="50" FixedLength="false" />
     <NavigationProperty Name="Comments" Relationship="BlogDatabaseModel.PostId" FromRole="BlogPost" ToRole="Comments" />
     <NavigationProperty Name="User" Relationship="BlogDatabaseModel.UsersId" FromRole="BlogPost" ToRole="User" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TagId" Relationship="BlogDatabaseModel.TagsId" FromRole="BlogPost" ToRole="Tags" />
+    <Property Name="TagsId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Comments">
     <Key>
@@ -94,6 +100,26 @@
       </Principal>
       <Dependent Role="BlogPost">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tag" Type="String" Nullable="false" MaxLength="50" />
+    <NavigationProperty Name="BlogPost" Relationship="BlogDatabaseModel.TagsId" FromRole="Tags" ToRole="BlogPost" />
+  </EntityType>
+  <Association Name="TagsId">
+    <End Type="BlogDatabaseModel.Tags" Role="Tags" Multiplicity="1" />
+    <End Type="BlogDatabaseModel.BlogPost" Role="BlogPost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="TagId" />
+      </Principal>
+      <Dependent Role="BlogPost">
+        <PropertyRef Name="TagsId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

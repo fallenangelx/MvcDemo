@@ -11,12 +11,10 @@
         <EntityTypeShape EntityType="BlogDatabaseModel.User" Width="1.625" PointX="6.375" PointY="3.25" />
         <AssociationConnector Association="BlogDatabaseModel.PostId" />
         <AssociationConnector Association="BlogDatabaseModel.UserId" ManuallyRouted="true" >
-          <ConnectorPoint PointX="7.6615967202398672" PointY="3.25" />
-          <ConnectorPoint PointX="7.6615967202398672" PointY="2.4210009765625" />
+          <ConnectorPoint PointX="7.375" PointY="3.25" />
+          <ConnectorPoint PointX="7.375" PointY="2.4210009765625" />
         </AssociationConnector>
         <AssociationConnector Association="BlogDatabaseModel.UsersId" />
-        <EntityTypeShape EntityType="BlogDatabaseModel.Tags" Width="1.5" PointX="1.75" PointY="2.625" />
-        <AssociationConnector Association="BlogDatabaseModel.TagsId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

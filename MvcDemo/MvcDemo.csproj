@@ -337,6 +337,8 @@
     <Content Include="Views\CredentialsTest\Create.cshtml" />
     <Content Include="Views\CredentialsTest\Edit.cshtml" />
     <Content Include="Views\CredentialsTest\Delete.cshtml" />
+    <Content Include="Views\CredentialsTest\Login.cshtml" />
+    <Content Include="Views\BlogPost\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dados\Dados.csproj">

@@ -72,9 +72,6 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tags.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

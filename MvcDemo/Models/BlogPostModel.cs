@@ -1,4 +1,6 @@
-﻿namespace MvcDemo.Models
+﻿using System.Collections.Generic;
+
+namespace MvcDemo.Models
 {
     public class BlogPostModel
     {
@@ -6,7 +8,6 @@
         public string Post { get; set; }
         public string Title { get; set; }
         public int UserId { get; set; }
-        public int TagsId { get; set; }
     }
 
     //public class DataModelPostContext : DbContext

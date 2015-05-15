@@ -52,9 +52,20 @@ namespace MvcDemo.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.UserSet.Add(credentialsmodel);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if ((credentialsmodel.UserName != null) &&
+                    (credentialsmodel.Password != null) &&
+                    (credentialsmodel.Email != null))
+                {
+                    db.UserSet.Add(credentialsmodel);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return Content("Error, be sure to fill all the boxes!");
+                }
+
+
             }
 
             return View(credentialsmodel);

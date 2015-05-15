@@ -1,0 +1,124 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Dados;
+using MvcDemo.Models;
+
+namespace MvcDemo.Controllers
+{
+    public class CredentialsTestController : Controller
+    {
+        private BlogDatabaseEntities db = new BlogDatabaseEntities();
+
+        //
+        // GET: /CredentialsTest/
+
+        public ActionResult Index()
+        {
+            return View(db.UserSet.ToList());
+        }
+
+        //
+        // GET: /CredentialsTest/Details/5
+
+        public ActionResult Details(int id = 0)
+        {
+            User credentialsmodel = db.UserSet.Find(id);
+            if (credentialsmodel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(credentialsmodel);
+        }
+
+        //
+        // GET: /CredentialsTest/Create
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        //
+        // POST: /CredentialsTest/Create
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(User credentialsmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.UserSet.Add(credentialsmodel);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(credentialsmodel);
+        }
+
+        //
+        // GET: /CredentialsTest/Edit/5
+
+        public ActionResult Edit(int id = 0)
+        {
+            User credentialsmodel = db.UserSet.Find(id);
+            if (credentialsmodel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(credentialsmodel);
+        }
+
+        //
+        // POST: /CredentialsTest/Edit/5
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(CredentialsModel credentialsmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(credentialsmodel).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(credentialsmodel);
+        }
+
+        //
+        // GET: /CredentialsTest/Delete/5
+
+        public ActionResult Delete(int id = 0)
+        {
+            User credentialsmodel = db.UserSet.Find(id);
+            if (credentialsmodel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(credentialsmodel);
+        }
+
+        //
+        // POST: /CredentialsTest/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            User credentialsmodel = db.UserSet.Find(id);
+            db.UserSet.Remove(credentialsmodel);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
+    }
+}

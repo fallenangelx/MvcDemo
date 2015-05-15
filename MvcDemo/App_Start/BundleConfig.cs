@@ -18,7 +18,7 @@ namespace MvcDemo
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
             bundles.Add(new ScriptBundle("~/bundles/loginScript").Include(
-                        "^/Scrips/loginScript.js"));
+                        "~/Scrips/loginScript.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

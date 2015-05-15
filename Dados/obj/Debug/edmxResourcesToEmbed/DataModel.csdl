@@ -28,17 +28,17 @@
       <PropertyRef Name="MovieId" />
     </Key>
     <Property Name="MovieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" />
-    <Property Name="Director" Type="String" Nullable="false" MaxLength="100" />
-    <Property Name="LaunchDate" Type="DateTime" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Director" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="LaunchDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="BlogPost">
     <Key>
       <PropertyRef Name="PostId" />
     </Key>
     <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Post" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" />
-    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" />
+    <Property Name="Post" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Comments" Relationship="BlogDatabaseModel.PostId" FromRole="BlogPost" ToRole="Comments" />
     <NavigationProperty Name="User" Relationship="BlogDatabaseModel.UsersId" FromRole="BlogPost" ToRole="User" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
@@ -50,7 +50,7 @@
       <PropertyRef Name="CommentId" />
     </Key>
     <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Post" Relationship="BlogDatabaseModel.PostId" FromRole="Comments" ToRole="BlogPost" />
     <Property Name="PostId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="User" Relationship="BlogDatabaseModel.UserId" FromRole="Comments" ToRole="User" />
@@ -61,9 +61,9 @@
       <PropertyRef Name="UserId" />
     </Key>
     <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" />
-    <Property Name="Email" Type="String" Nullable="false" FixedLength="false" MaxLength="80" />
-    <Property Name="Password" Type="String" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" FixedLength="false" MaxLength="80" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Comments" Relationship="BlogDatabaseModel.UserId" FromRole="User" ToRole="Comments" />
     <NavigationProperty Name="Post" Relationship="BlogDatabaseModel.UsersId" FromRole="User" ToRole="BlogPost" />
   </EntityType>
@@ -108,7 +108,7 @@
       <PropertyRef Name="TagId" />
     </Key>
     <Property Name="TagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Tag" Type="String" Nullable="false" MaxLength="50" />
+    <Property Name="Tag" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="BlogPost" Relationship="BlogDatabaseModel.TagsId" FromRole="Tags" ToRole="BlogPost" />
   </EntityType>
   <Association Name="TagsId">

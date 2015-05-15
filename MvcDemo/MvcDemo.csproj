@@ -183,6 +183,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogPostController.cs" />
+    <Compile Include="Controllers\CredentialsController.cs" />
+    <Compile Include="Controllers\CredentialsTestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -191,6 +193,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BlogPostModel.cs" />
+    <Compile Include="Models\CredentialsModel.cs" />
     <Compile Include="Models\MovieDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -329,6 +332,11 @@
     <Content Include="Views\Movies\Edit.cshtml" />
     <Content Include="Views\Movies\Delete.cshtml" />
     <Content Include="Views\BlogPost\Index.cshtml" />
+    <Content Include="Views\CredentialsTest\Index.cshtml" />
+    <Content Include="Views\CredentialsTest\Details.cshtml" />
+    <Content Include="Views\CredentialsTest\Create.cshtml" />
+    <Content Include="Views\CredentialsTest\Edit.cshtml" />
+    <Content Include="Views\CredentialsTest\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dados\Dados.csproj">

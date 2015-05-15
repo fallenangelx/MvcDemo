@@ -1,17 +1,17 @@
 ﻿@using System.Web.Configuration
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title</title>
-        <link href="@Url.Content("~/Content/slate.bootstrap.css")" rel="stylesheet" type="text/css" />
-        @*<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")"></script>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/slate.bootstrap.css")" rel="stylesheet" type="text/css" />
+    @*<script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")"></script>
         <script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"></script>
         @Styles.Render("~/Content/css")*@
-        @Styles.Render("~/Content/slate.bootstrap.css")
-    </head>
-    <body>
-        <nav class="navbar navbar-default">
+    @Styles.Render("~/Content/slate.bootstrap.css")
+</head>
+<body>
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -31,18 +31,23 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/Views/BlogPost/Create.cshtml" class="btn btn-info">New Post</a></li>
+                    <li>@Html.ActionLink("New Post", "Create", "BlogPost")</li>
                     <li>@Html.ActionLink("Login", "Login", "CredentialsTest")</li>
                     <li>@Html.ActionLink("Register", "Create", "CredentialsTest")</li>
                 </ul>
             </div>
         </div>
-        </nav>
+    </nav>
 
-        <section id="main">
-            @RenderBody()
-            <p>Copyright TestBlog. All rights reserved.</p>
-        </section>
-        @Scripts.Render("~/Scripts/bootstrap.js")
-        @Scripts.Render("~/bundles/jqueryval")
-    </body>
+    <section id="main">
+        @RenderBody()
+        <p>Copyright TestBlog. All rights reserved.</p>
+    </section>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrapjs")
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

@@ -20,24 +20,29 @@ namespace MvcDemo.Controllers
             return View(blogpostmodel);
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
 
         //
         // POST: /BlogPost/Post/
-        [HttpPost]
-        public ActionResult Create(BlogPost blogpostmodel)
-        {
-            if (ModelState.IsValid)
-            {
+        //[HttpPost]
+        //public ActionResult Create(BlogPost blogpostmodel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
                 
-                if ((blogpostmodel.Post != null) &&
-                    blogpostmodel.Title != null)
-                {
-                    db.BlogPostSet.Add(blogpostmodel);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }
-            return RedirectToAction("Index");
-        }
+        //        if ((blogpostmodel.Post != null) &&
+        //            blogpostmodel.Title != null)
+        //        {
+        //            db.BlogPostSet.Add(blogpostmodel);
+        //            db.SaveChanges();
+        //            return RedirectToAction("Index");
+        //        }
+        //    }
+        //    return RedirectToAction("Index");
+        //}
     }
 }

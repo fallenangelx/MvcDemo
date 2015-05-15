@@ -4,7 +4,12 @@
     ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+@section Scripts
+{
+    @Scripts.Render("~/bundles/loginScript")
+}
+
+@*@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -27,13 +32,42 @@
             </div>
 
             <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
+                <div class="col-md-10 col-md-offset-2">
                     <button type="submit" class="btn btn-primary" value="Log in">Submit</button>
                 </div>
             </div>
         </fieldset>
     </form>
-}
+}*@
+
+<form class="form-horizontal">
+    <fieldset>
+        <legend>Login</legend>
+        <div class="row col-md-10">
+            <div class="form-group">
+                <label for="inputUsername" class="col-md-2 control-label">Username</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputUsername" placeholder="Email">
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-10">
+            <div class="form-group">
+                <label for="inputPassword" class="col-md-2 control-label">Password</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-10">
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <button type="submit" class="btn btn-primary" id="Login">Submit</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

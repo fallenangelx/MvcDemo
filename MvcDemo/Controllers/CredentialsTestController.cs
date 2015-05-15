@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Dados;
+using MvcDemo.Dto;
 using MvcDemo.Models;
 
 namespace MvcDemo.Controllers
@@ -20,6 +22,17 @@ namespace MvcDemo.Controllers
         public ActionResult Index()
         {
             return View(db.UserSet.ToList());
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DoLogin(LoginDTO loginData)
+        {
+            return View();
         }
 
         //

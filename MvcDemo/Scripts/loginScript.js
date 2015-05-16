@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    alert("Eu sou o cara do Login");
     $("#Login").bind("click", function () {
         var loginData = {
             "Username": "" + $("#inputUsername").val() + "",
@@ -12,15 +11,15 @@
             data: JSON.stringify(loginData),
             contentType: "application/json",
             datatype: "json",
-            success: function(loginvalues) {
+            success: function (loginvalues) {
                 if (loginvalues == "True")
                     window.location.reload();
                 else {
                     alert("Error, login not found!");
                 }
             },
-            error: function() { alert("Error, login not found!"); }
+            error: function () { alert("Error, login not found!"); }
 
-    });
+        });
     });
 })

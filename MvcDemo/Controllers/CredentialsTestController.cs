@@ -30,9 +30,23 @@ namespace MvcDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult DoLogin(LoginDTO loginData)
+        public bool DoLogin(LoginDTO loginData)
         {
-            return View();
+            var containuser = 0;
+            foreach (var user in db.UserSet)
+            {
+                if (loginData.Username == user.UserName && loginData.Password == user.Password)
+                    containuser = 1;
+            }
+
+            if (containuser == 1)
+            {
+                Session.Add("logged", loginData);
+                return true;
+            }
+
+            else
+                return false;
         }
 
         //

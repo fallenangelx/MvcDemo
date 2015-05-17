@@ -7,12 +7,42 @@
 
 @foreach (var item in Model)
 {
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">@Html.DisplayFor(dadosItem => item.Title) - Posted by: @Html.DisplayFor(dadosItem => item.User.UserName)</h3>
-        </div>
-        <div class="panel-body">
-            @Html.DisplayFor(dadosItem => item.Post)
+    <div class="col-lg-12">
+        <div class="well well-lg">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@Html.DisplayFor(dadosItem => item.Title) - Posted by: @Html.DisplayFor(dadosItem => item.User.UserName)</h3>
+                </div>
+                <div class="panel-body">
+                    @Html.DisplayFor(dadosItem => item.Post)
+                </div>
+                <div id="PostID" hidden>@Html.DisplayFor(dadosItem => item.PostId)</div>
+                <div id="UserID" hidden>@Html.DisplayFor(dadosItem => item.UserId)</div>
+
+                <div class="row col-lg-3">
+                    <a class="btn btn-success" id="newComment">New Comment</a>
+                    <a class="btn btn-default" id="showAllComments">Show All Comments</a>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="modal" id="test">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body…</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 }

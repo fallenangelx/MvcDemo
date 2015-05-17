@@ -1,4 +1,4 @@
-﻿@model System.Collections.Generic.List<Dados.BlogPost>
+﻿@model List<Dados.BlogPost>
 @*@model IEnumerable<MvcDemo.Models.BlogPostModel>*@
 
 @{
@@ -9,7 +9,7 @@
 {
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">@Html.DisplayFor(dadosItem => item.Title)</h3>
+            <h3 class="panel-title">@Html.DisplayFor(dadosItem => item.Title) - Posted by: @Html.DisplayFor(dadosItem => item.User.UserName)</h3>
         </div>
         <div class="panel-body">
             @Html.DisplayFor(dadosItem => item.Post)

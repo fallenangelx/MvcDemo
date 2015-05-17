@@ -21,6 +21,9 @@ namespace MvcDemo
             bundles.Add(new ScriptBundle("~/bundles/loginScript").Include(
                         "~/Scripts/loginScript.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/postScript").Include(
+                        "~/Scripts/sendpostScript.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrapjs").Include(
                         "~/Scripts/bootstrap.min.js"));
 

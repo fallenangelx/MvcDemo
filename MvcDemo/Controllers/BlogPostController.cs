@@ -63,5 +63,41 @@ namespace MvcDemo.Controllers
             }
         }
 
+        public bool NewComment(CommentDTO commentmodel)
+        {
+            if (commentmodel.Comment == null)
+            {
+                return false;
+            }
+            else
+            {
+                foreach (var user in db.UserSet)
+                {
+                    if (user.UserId == commentmodel.UserId)
+                    {
+                        var postUserId = user.UserId;
+                    }
+                }
+                foreach (var blogPost in db.BlogPostSet)
+                {
+                    if (blogPost.PostId == commentmodel.PostId)
+                    {
+                        var blogPostId = blogPost.PostId;
+                    }
+                }
+
+                var newcomment = new Comments
+                {
+                    Comment = commentmodel.Comment,
+                    PostId = commentmodel.PostId,
+                    UserId = commentmodel.UserId
+                };
+
+                db.CommentsSet.Add(newcomment);
+                db.SaveChanges();
+                return true;
+            }
+        }
+
     }
 }

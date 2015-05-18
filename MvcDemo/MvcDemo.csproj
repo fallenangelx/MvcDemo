@@ -187,6 +187,7 @@
     <Compile Include="Controllers\CredentialsTestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Dto\CommentDTO.cs" />
     <Compile Include="Dto\LoginDTO.cs" />
     <Compile Include="Dto\PostDTO.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -273,6 +274,7 @@
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\createComment.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
@@ -290,6 +292,7 @@
     <Content Include="Scripts\loginScript.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\sendpostScript.js" />
+    <Content Include="Scripts\showComment.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

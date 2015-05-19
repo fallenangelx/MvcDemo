@@ -3,7 +3,7 @@
         $("#newCommentModal").modal("show");
     });
 
-    $("#saveComment").bind("click", function () {
+    $("#saveComment").bind("click", function (obj) {
 
         var comment = {
             "Comment": "" + $("#inputComment").val() + "",

@@ -22,11 +22,11 @@
                 <div class="panel-body">
                     @Html.DisplayFor(dadosItem => item.Post)
                 </div>
-                @Html.Hidden("GetPostID", @Html.DisplayFor(dadosItem => item.PostId))
+                @Html.Hidden("GetPostID" + item.PostId, @Html.DisplayFor(dadosItem => item.PostId))
                 @Html.Hidden("GetUserID", @Html.DisplayFor(dadosItem => item.UserId))
 
                 <div class="row col-lg-5">
-                    <a class="btn btn-success" data-toggle="modal" data-target="#newCommentModal" id="newCommentBtn">New Comment</a>
+                    <a class="btn btn-success" data-toggle="modal" data-target="#newCommentModal" id="newCommentBtn" PostId="item.PostId">New Comment</a>
                     <a class="btn btn-default" id="showAllCommentsBtn">Show All Comments</a>
                 </div>
             </div>

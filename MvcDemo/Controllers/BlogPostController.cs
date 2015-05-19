@@ -18,6 +18,7 @@ namespace MvcDemo.Controllers
 
         public ActionResult Index()
         {
+            // Pega os posts do banco e organiza em ordem decrescente depois retorna os posts.
             var blogpostmodel = db.BlogPostSet.OrderByDescending(x => x.PostId).ToList();
             return View(blogpostmodel);
         }
@@ -66,10 +67,12 @@ namespace MvcDemo.Controllers
 
         public bool NewComment(CommentDTO commentmodel)
         {
+            // Se o comentário vier vazio, retorna falso e aparece um alert de erro.
             if (commentmodel.Comment == null)
             {
                 return false;
             }
+            // Caso contrário, verifica quem é o usuário do post, para atrelar ao comentário.
             else
             {
                 foreach (var user in db.UserSet)
@@ -79,6 +82,7 @@ namespace MvcDemo.Controllers
                         var postUserId = user.UserId;
                     }
                 }
+                // Também faz o atrelamento do id do post com o comentário.
                 foreach (var blogPost in db.BlogPostSet)
                 {
                     if (blogPost.PostId == commentmodel.PostId)
@@ -86,14 +90,14 @@ namespace MvcDemo.Controllers
                         var blogPostId = blogPost.PostId;
                     }
                 }
-
+                // guarda os dados
                 var newcomment = new Comments
                 {
                     Comment = commentmodel.Comment,
                     PostId = commentmodel.PostId,
                     UserId = commentmodel.UserId
                 };
-
+                // Guarda no banco e retorna true.
                 db.CommentsSet.Add(newcomment);
                 db.SaveChanges();
                 return true;
@@ -106,6 +110,7 @@ namespace MvcDemo.Controllers
             //{
             //   var commentmodel = db.CommentsSet.OrderByDescending(x => x.CommentId).Select(x => x.PostId == post.PostId).ToList();
             //}
+            // Apenas para teste, coloquei os comentários em ordem decrescente, mas não está retornando os comentários ainda.
             var commentmodel = db.CommentsSet.OrderByDescending(x => x.CommentId).ToList();
             return View(commentmodel);
         }

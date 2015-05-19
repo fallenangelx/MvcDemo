@@ -21,6 +21,7 @@ namespace MvcDemo.Controllers
 
         public ActionResult Index()
         {
+            // lista os usuários
             return View(db.UserSet.ToList());
         }
 
@@ -33,12 +34,13 @@ namespace MvcDemo.Controllers
         public bool DoLogin(LoginDTO loginData)
         {
             var containuser = 0;
+            // verifica se o usuário já existe no db
             foreach (var user in db.UserSet)
             {
                 if (loginData.Username == user.UserName && loginData.Password == user.Password)
                     containuser = 1;
             }
-
+            // se o conter o usuário, salva no cache para o usuário ficar logado
             if (containuser == 1)
             {
                 Session.Add("logged", loginData);
@@ -79,6 +81,7 @@ namespace MvcDemo.Controllers
         {
             if (ModelState.IsValid)
             {
+                // verifica se todos os campos estão preenchidos se estiver, grava no db o novo usuário.
                 if ((credentialsmodel.UserName != null) &&
                     (credentialsmodel.Password != null) &&
                     (credentialsmodel.Email != null))

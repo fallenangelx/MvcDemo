@@ -50,20 +50,6 @@ namespace MvcDemo.Controllers
             else
                 return false;
         }
-
-        //
-        // GET: /CredentialsTest/Details/5
-
-        public ActionResult Details(int id = 0)
-        {
-            User credentialsmodel = db.UserSet.Find(id);
-            if (credentialsmodel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(credentialsmodel);
-        }
-
         //
         // GET: /CredentialsTest/Create
 
@@ -99,67 +85,6 @@ namespace MvcDemo.Controllers
             }
 
             return View(credentialsmodel);
-        }
-
-        //
-        // GET: /CredentialsTest/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            User credentialsmodel = db.UserSet.Find(id);
-            if (credentialsmodel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(credentialsmodel);
-        }
-
-        //
-        // POST: /CredentialsTest/Edit/5
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(CredentialsModel credentialsmodel)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(credentialsmodel).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(credentialsmodel);
-        }
-
-        //
-        // GET: /CredentialsTest/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            User credentialsmodel = db.UserSet.Find(id);
-            if (credentialsmodel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(credentialsmodel);
-        }
-
-        //
-        // POST: /CredentialsTest/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            User credentialsmodel = db.UserSet.Find(id);
-            db.UserSet.Remove(credentialsmodel);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

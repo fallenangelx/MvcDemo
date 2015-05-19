@@ -4,7 +4,6 @@
     });
 
     $("#saveComment").bind("click", function (obj) {
-
         var comment = {
             "Comment": "" + $("#inputComment").val() + "",
             "UserId": "" + $("#UserID").val() + "",

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Dados;
+using Microsoft.Ajax.Utilities;
 using MvcDemo.Dto;
 using MvcDemo.Models;
 
@@ -59,7 +60,7 @@ namespace MvcDemo.Controllers
                 else
                 {
                     return View();
-                }   
+                }
             }
         }
 
@@ -97,6 +98,16 @@ namespace MvcDemo.Controllers
                 db.SaveChanges();
                 return true;
             }
+        }
+
+        public ActionResult ReturnComment()
+        {
+            //foreach (var post in db.BlogPostSet)
+            //{
+            //   var commentmodel = db.CommentsSet.OrderByDescending(x => x.CommentId).Select(x => x.PostId == post.PostId).ToList();
+            //}
+            var commentmodel = db.CommentsSet.OrderByDescending(x => x.CommentId).ToList();
+            return View(commentmodel);
         }
 
     }

@@ -13,7 +13,7 @@
             datatype: "json",
             success: function (loginvalues) {
                 if (loginvalues == "True")
-                    window.location.reload();
+                    window.location.href = '/BlogPost/Create';
                 else {
                     alert("Error, login not found!");
                 }
